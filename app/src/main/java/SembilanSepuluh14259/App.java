@@ -43,19 +43,19 @@ public class App
         PasswordStoreDAO passwordStoreDAO = new PasswordStoreDaoSQLite();
         
         PasswordStore [] johnPasswords = {
-            new PasswordStore(john.fullname, "commerciallyjohn", "john123", PasswordStore.CAT_MOBILEAPP, folderList.get(eCommerce)),
-            new PasswordStore(john.fullname, "johngaming", "john1234", PasswordStore.CAT_MOBILEAPP, folderList.get(other)),
-            new PasswordStore(john.fullname, "smartyjohn", "john12345", PasswordStore.CAT_WEBAPP, folderList.get(academy)),
-            new PasswordStore(john.fullname, "sociallyjohn", "john123456", PasswordStore.CAT_WEBAPP, folderList.get(social)),
-            new PasswordStore(john.fullname, "johnjohn123", "john123457", PasswordStore.CAT_OTHER, folderList.get(other)),
+            new PasswordStore("Akun Toped", "commerciallyjohn", "john123", PasswordStore.CAT_MOBILEAPP, folderList.get(eCommerce)),
+            new PasswordStore("Akun Valo", "johngaming", "john1234", PasswordStore.CAT_MOBILEAPP, folderList.get(other)),
+            new PasswordStore("Akun Mhs", "smartyjohn", "john12345", PasswordStore.CAT_WEBAPP, folderList.get(academy)),
+            new PasswordStore("Akun Tele", "sociallyjohn", "john123456", PasswordStore.CAT_WEBAPP, folderList.get(social)),
+            new PasswordStore("Akun Random", "johnjohn123", "john123457", PasswordStore.CAT_OTHER, folderList.get(other)),
         };
         
         PasswordStore [] andyPasswords = {
-            new PasswordStore(andy.fullname, andy.username, "andysocial", PasswordStore.CAT_WEBAPP, folderList.get(social)),
-            new PasswordStore(andy.fullname, andy.username, "andycommerce", PasswordStore.CAT_MOBILEAPP, folderList.get(eCommerce)),
-            new PasswordStore(andy.fullname, andy.username, "andycademy", PasswordStore.CAT_WEBAPP, folderList.get(academy)),
-            new PasswordStore(andy.fullname, andy.username, "andy12345678", PasswordStore.CAT_OTHER, folderList.get(other)),
-            new PasswordStore(andy.fullname, andy.username, "andygame", PasswordStore.CAT_OTHER, folderList.get(other)),
+            new PasswordStore("Akun Insta", "andysocial", "andy23948", PasswordStore.CAT_WEBAPP, folderList.get(social)),
+            new PasswordStore("Akun TokoOren", "andycommerce", "2394862and29347", PasswordStore.CAT_MOBILEAPP, folderList.get(eCommerce)),
+            new PasswordStore("Akun Brainly", "andycademy", "andy342", PasswordStore.CAT_WEBAPP, folderList.get(academy)),
+            new PasswordStore("Akun Random", "andy12345678", "dyan234", PasswordStore.CAT_OTHER, folderList.get(other)),
+            new PasswordStore("Akun CS", "andygame", "13579", PasswordStore.CAT_OTHER, folderList.get(other)),
         };
         
         for (PasswordStore password: johnPasswords)
@@ -72,13 +72,13 @@ public class App
         
         int i = 1;
         
-        for (PasswordStore user: andyPasswordList)
+        for (PasswordStore password: andyPasswordList)
         {
             System.out.print(i);
-            System.out.println("\tAccount\t\t: " + user.name);
-            System.out.println("\tUsername\t: " + user.username);
-            System.out.println("\tCategory\t: " + user.getCategory());
-            System.out.println("\tFolder\t\t: " + user.folder.name);
+            System.out.println("\tAccount\t\t: " + password.name);
+            System.out.println("\tUsername\t: " + password.username);
+            System.out.println("\tCategory\t: " + password.getCategory());
+            System.out.println("\tFolder\t\t: " + password.folder.name);
             System.out.println("");
             
             i++;

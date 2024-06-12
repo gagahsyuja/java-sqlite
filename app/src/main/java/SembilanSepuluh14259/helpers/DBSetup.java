@@ -4,7 +4,6 @@
  */
 package SembilanSepuluh14259.helpers;
 
-import SembilanSepuluh14259.helpers.DBConnect;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.Statement;

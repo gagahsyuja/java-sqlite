@@ -4,7 +4,6 @@
  */
 package SembilanSepuluh14259.dao;
 
-import SembilanSepuluh14259.entities.PasswordStore;
 import SembilanSepuluh14259.helpers.DBConnect;
 import SembilanSepuluh14259.entities.UserData;
 import java.sql.Connection;
@@ -48,10 +47,7 @@ public class UserDaoSQLite implements UserDAO
 
     @Override
     public UserData login(String username, String password)
-    {   
-//        UserData user = null;
-        boolean passwordCorrect = false;
-        
+    {        
         String query = "SELECT * FROM userdata where username = ?";
         
         try (Connection conn = DBConnect.connect())

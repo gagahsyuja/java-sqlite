@@ -8,8 +8,6 @@ import SembilanSepuluh14259.helpers.DBConnect;
 import SembilanSepuluh14259.entities.UserData;
 import SembilanSepuluh14259.entities.Folder;
 import SembilanSepuluh14259.entities.PasswordStore;
-import SembilanSepuluh14259.dao.FolderDaoSQLite;
-import SembilanSepuluh14259.dao.FolderDAO;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -59,7 +57,7 @@ public class PasswordStoreDaoSQLite implements PasswordStoreDAO
     @Override
     public ArrayList<PasswordStore> listPassword(UserData user)
     {
-        String query = "SELECT * FROM passwordstore WHERE name = ? AND username = ?";
+        String query = "SELECT * FROM passwordstore WHERE user_id = ?";
         ArrayList<PasswordStore> passwords = new ArrayList<>();
         
         FolderDAO folderDAO = new FolderDaoSQLite();
@@ -69,8 +67,7 @@ public class PasswordStoreDaoSQLite implements PasswordStoreDAO
         {
             PreparedStatement pstmt = conn.prepareStatement(query);
             
-            pstmt.setString(1, user.fullname);
-            pstmt.setString(2, user.username);
+            pstmt.setInt(1, user.id);
             
             ResultSet result = pstmt.executeQuery();
             
@@ -107,7 +104,7 @@ public class PasswordStoreDaoSQLite implements PasswordStoreDAO
     @Override
     public ArrayList<PasswordStore> findPassword(String name, UserData user)
     {
-        String query = "SELECT * FROM passwordstore WHERE name = ? OR name = ? OR name = ?";
+        String query = "SELECT * FROM passwordstore WHERE name LIKE ? AND user_id = ?";
         ArrayList<PasswordStore> passwords = new ArrayList<>();
         
         FolderDAO folderDAO = new FolderDaoSQLite();
@@ -117,16 +114,15 @@ public class PasswordStoreDaoSQLite implements PasswordStoreDAO
         {
             PreparedStatement pstmt = conn.prepareStatement(query);
             
-            pstmt.setString(1, name);
-            pstmt.setString(2, user.fullname);
-            pstmt.setString(2, user.username);
+            pstmt.setString(1, "%" + name + "%");
+            pstmt.setInt(2, user.id);
             
             ResultSet result = pstmt.executeQuery();
             
             while (result.next())
             {
                 int folderID = result.getInt("folder_id");
-                String folderName = folderList.get(folderID).name;
+                String folderName = folderList.get(folderID - 1).name;
                 
                 Folder folder = new Folder(folderID, folderName);
                 
